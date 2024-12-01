@@ -1,0 +1,47 @@
+Index: 01-day/first.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>with open('input', 'r') as file:\n    lines = file.readlines()  # Har bir qatorni o'qiydi\n\nlist1 = []\nlist2 = []\n\nfor line in lines:\n    values = line.strip().split()\n    list1.append(int(values[0]))\n    list2.append(int(values[1]))\n\n\ndef calculate_total_distance(left_list, right_list):\n    left_list.sort()\n    right_list.sort()\n\n    total_distance = 0\n    for num in left_list:\n        total_distance += num*right_list.count(num)\n\n    return total_distance\nprint(calculate_total_distance(list2, list1))\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/01-day/first.py b/01-day/first.py
+--- a/01-day/first.py	(revision 06be28bf0fa9f35411545291f60d7ad93082e84e)
++++ b/01-day/first.py	(date 1733054491356)
+@@ -1,5 +1,6 @@
++
+ with open('input', 'r') as file:
+-    lines = file.readlines()  # Har bir qatorni o'qiydi
++    lines = file.readlines()
+ 
+ list1 = []
+ list2 = []
+@@ -10,13 +11,25 @@
+     list2.append(int(values[1]))
+ 
+ 
++# Second stars problem
++def calculate_similarity(left_list, right_list):
++    similarity_score = 0
++    for num in left_list:
++        similarity_score += num * right_list.count(num)
++    return similarity_score
++
++
+ def calculate_total_distance(left_list, right_list):
+     left_list.sort()
+     right_list.sort()
+ 
++    # Calculate total distance
+     total_distance = 0
+-    for num in left_list:
+-        total_distance += num*right_list.count(num)
+-
++    for i in range(len(left_list)):
++        total_distance += abs(left_list[i] - right_list[i])
+     return total_distance
++
+ print(calculate_total_distance(list2, list1))
++# 2031679
++print(calculate_similarity(list1, list2))
++# 19678534
