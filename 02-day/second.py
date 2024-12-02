@@ -79,6 +79,4 @@ def process_reports(file_path):
 
     print(f"\nTotal Safe Reports (with Dampener): {safe_reports}")
 
-
-file_path = "input.txt"
 process_reports(file_path)
